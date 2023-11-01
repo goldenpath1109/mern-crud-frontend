@@ -1,38 +1,207 @@
-.App {
-  text-align: center;
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+    font-size: 67%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button {
+    cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.app-contents {
+    background-color: hsl(220, 13%, 18%);
+    min-height: 100vh;
+    height: max-content;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+
+    padding-top: 4rem;
 }
 
-.App-link {
-  color: #61dafb;
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 8rem 1.6fr;
+    gap: 0px 0px;
+    grid-template-areas:
+        "button-back . button-new"
+        "contents contents contents";
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button,
+.input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+
+    border: none;
+    border-radius: 0.5rem;
+
+    height: 4rem;
+    width: 24rem;
+}
+
+.button {
+    display: flex;
+    margin: 0;
+}
+.button-back,
+.button-new {
+    width: 8rem;
+}
+
+.button-back {
+    grid-area: button-back;
+}
+
+.button-new {
+    grid-area: button-new;
+    display: flex;
+    justify-self: end;
+}
+
+.contents {
+    grid-area: contents;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-height: 80vh;
+
+    h1 {
+        margin-bottom: 4rem;
+    }
+}
+
+.list-container {
+    display: flex;
+
+    flex-direction: column;
+
+    li {
+        background-color: hsl(220, 13%, 28%);
+        border-radius: 0.5rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        padding: 2rem;
+
+        min-height: 20rem;
+        height: max-content;
+        width: 24rem !important;
+
+        margin: 0 auto 2rem;
+        .title-description {
+            text-align: left;
+
+            h3 {
+                text-transform: capitalize;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+
+            button {
+                &:first-of-type {
+                    margin-right: 2rem;
+                }
+            }
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+        gap: 2rem;
+        width: 60rem;
+
+        margin: 0 auto;
+    }
+
+    @media only screen and (min-width: 992px) {
+        grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
+        width: 120rem;
+    }
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: 24rem;
+
+    font-size: 2rem;
+
+    .label {
+        margin-bottom: 0.8rem;
+    }
+
+    .input {
+        margin-bottom: 2rem;
+    }
+}
+
+.update-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.4);
+
+    .update-contents {
+        display: grid;
+        grid-template-areas:
+            "close"
+            "form";
+
+        background-color: hsl(220, 13%, 28%);
+
+        padding: 2rem 4rem 4rem;
+
+        border-radius: 0.5rem;
+
+        .close {
+            grid-area: close;
+            color: white;
+            font-weight: 700;
+
+            display: flex;
+            justify-content: flex-end;
+
+            margin-bottom: 4rem;
+
+            cursor: pointer;
+        }
+
+        .contents {
+            grid-area: form;
+        }
+    }
 }
